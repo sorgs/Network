@@ -19,6 +19,4 @@ class LocalException : Exception {
         this.code = code
         this.displayMessage = displayMessage
     }
-
-
 }

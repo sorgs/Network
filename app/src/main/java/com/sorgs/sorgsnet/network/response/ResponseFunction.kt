@@ -12,12 +12,12 @@ import io.reactivex.functions.Function
  * @author Sorgs.
  * Created date: 2019/7/30.
  */
-class ResponseFunction<T> : Function<Response<T>, ObservableSource<T>> {
-    override fun apply(tResponse: Response<T>): ObservableSource<T> {
-        val code = tResponse.code
-        val message = tResponse.msg
+class ResponseFunction<T> : Function<ResponseData<T>, ObservableSource<T>> {
+    override fun apply(tResponseData: ResponseData<T>): ObservableSource<T> {
+        val code = tResponseData.code
+        val message = tResponseData.msg
         return if (code == 200) {
-            Observable.just(tResponse.data)
+            Observable.just(tResponseData.data)
         } else {
             Observable.error(LocalException(code, message))
         }

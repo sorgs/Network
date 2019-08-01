@@ -14,12 +14,7 @@ class ResponseTransformer {
         /**
          * 处理数据结果
          */
-        fun <T> handleResult(): ObservableTransformer<Response<T>, T> {
-            /*return ObservableTransformer<Response<T>, T>(object : ObservableTransformer<Response<T>, T> {
-                 override fun apply(upstream: Observable<Response<T>>): ObservableSource<T> {
-                 }
-
-             })*/
+        fun <T> handleResult(): ObservableTransformer<ResponseData<T>, T> {
             return ObservableTransformer { upstream ->
                 upstream.onErrorResumeNext(ErrorResumeFunction())
                         .flatMap(ResponseFunction())

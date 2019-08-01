@@ -1,8 +1,9 @@
 package com.sorgs.sorgsnet.network.request
 
 import com.sorgs.JavaBean
-import com.sorgs.sorgsnet.network.response.Response
+import com.sorgs.sorgsnet.network.response.ResponseData
 import io.reactivex.Observable
+import retrofit2.Call
 import retrofit2.http.POST
 import retrofit2.http.Query
 
@@ -15,9 +16,12 @@ import retrofit2.http.Query
  */
 interface Request {
     companion object {
-        val HOST = "http://192.168.31.197:8080/demo/"
+        val HOST = "http://42.157.129.91/"
     }
 
     @POST("user/sorgs")
-    abstract fun getSorgs(@Query("id") id: String): Observable<Response<JavaBean>>
+    fun getSorgs(@Query("id") id: String): Observable<ResponseData<JavaBean>>
+
+    @POST("user/sorgs")
+    fun getCallTest(@Query("id") id: String): Call<ResponseData<JavaBean>>
 }

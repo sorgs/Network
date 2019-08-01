@@ -11,8 +11,8 @@ import io.reactivex.functions.Function
  * @author Sorgs.
  * Created date: 2019/7/30.
  */
-class ErrorResumeFunction<T> : Function<Throwable, ObservableSource<out Response<T>>> {
-    override fun apply(throwable: Throwable): ObservableSource<out Response<T>> {
+class ErrorResumeFunction<T> : Function<Throwable, ObservableSource<out ResponseData<T>>> {
+    override fun apply(throwable: Throwable): ObservableSource<out ResponseData<T>> {
         return Observable.error(CustomException.handleException(throwable))
     }
 }

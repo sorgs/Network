@@ -11,7 +11,7 @@ package com.sorgs.sorgsnet.network.response
  * @author Sorgs.
  * Created date: 2019/7/30.
  */
-data class Response<T>(
+data class ResponseData<T>(
         var code: Int,
         var data: T?,
         var msg: String?
